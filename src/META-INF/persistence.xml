@@ -7,7 +7,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
          <property name="hibernate.connection.driver_class" value="org.gjt.mm.mysql.Driver"/>
          <property name="hibernate.connection.username" value="root"/>
          <property name="hibernate.connection.password" value="root123"/>
-         <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3366/itcast?useUnicode=true&amp;characterEncoding=UTF-8"/>
+         <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/itcast?useUnicode=true&amp;characterEncoding=UTF-8"/>
          <property name="hibernate.max_fetch_depth" value="3"/>
          <property name="hibernate.hbm2ddl.auto" value="update"/>
          <property name="hibernate.show_sql" value="false"/>

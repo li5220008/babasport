@@ -1,6 +1,7 @@
 package cn.itcast.service.user;
 
 import cn.itcast.bean.user.Buyer;
+import cn.itcast.service.base.DAO;
 
 /**
  * Desc:  用户业务处理类
@@ -8,9 +9,5 @@ import cn.itcast.bean.user.Buyer;
  * Date: 13-8-25
  * Time: 下午3:21
  */
-public interface BuyerService {
-    public void save(Buyer buyer);
-    public void update(Buyer buyer);
-    public void delete(String username);
-    public Buyer find(Buyer buyer);
+public interface BuyerService extends DAO<Buyer> {
 }
