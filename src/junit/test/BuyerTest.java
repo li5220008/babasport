@@ -9,6 +9,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.LinkedHashMap;
+
 /**
  * Desc:
  *
@@ -61,7 +63,14 @@ public class BuyerTest {
 
     @Test
     public void getScrollData(){
-        QueryResult<Buyer> qr = buyerService.getScrollData(5, 5);
+        String where = "o.email=?1";
+        Object[] params = new Object[]{"liming@sss.cn1"};
+
+        LinkedHashMap<String,String> ordermap = new LinkedHashMap<String, String>();
+        ordermap.put("email", "asc");
+        ordermap.put("password", "desc");
+
+        QueryResult<Buyer> qr = buyerService.getScrollData(0, 5, where, params, ordermap);
         for(Buyer buyer : qr.getResultlist()){
             System.out.println(buyer.getEmail());
         }

@@ -5,6 +5,7 @@ import cn.itcast.bean.QueryResult;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 
 /**
  * desc: 实体通用接口
@@ -14,7 +15,11 @@ import java.io.Serializable;
  * @param <T> 实体类型
  */
 public interface DAO<T> {
+    public QueryResult<T> getScrollData();
     public QueryResult<T> getScrollData(int firstResult, int maxResult);
+    public QueryResult<T> getScrollData(int firstResult, int maxResult, String where, Object[] params);
+    public QueryResult<T> getScrollData(int firstResult, int maxResult, LinkedHashMap<String, String> ordermap);
+    public QueryResult<T> getScrollData(int firstResult, int maxResult, String where, Object[] params, LinkedHashMap<String, String> order);
 
     /**
      * 保存实体
