@@ -3,9 +3,16 @@
           "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
           "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 <struts-config>
+    <form-beans>
+        <form-bean name="buyerForm" type="cn.itcast.web.action.user.BuyerForm"/>
+    </form-beans>
+    <global-forwards>
+        <forward name="message" path="/WEB-INF/page/share/message.jsp"/>
+    </global-forwards>
     <action-mappings>
-        <action path="/user/reg" name="" scope="request" parameter="method">
-            <forward name="regUI" path="/WEB-INF/page/"
+        <action path="/user/reg" name="buyerForm" scope="request" parameter="method">
+            <forward name="regUI" path="/WEB-INF/page/user/userReg.jsp"></forward>
+            <forward name="checkResult" path="/WEB-INF/page/user/checkuser.jsp"></forward>
         </action>
     </action-mappings>
     <controller>

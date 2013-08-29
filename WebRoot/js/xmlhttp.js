@@ -21,12 +21,12 @@ function send_request(callback, urladdress, isReturnData){
 
 function getXMLHttpRequest() {
         var xmlhttp;
-		if (window.XMLHttpRequest) {
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 			try {
 				xmlhttp = new XMLHttpRequest();
 				xmlhttp.overrideMimeType("text/html;charset=UTF-8");//设定以UTF-8编码识别数据
 			} catch (e) {}
-		} else if (window.ActiveXObject) {
+		} else if (window.ActiveXObject) {// code for IE6, IE5
 			try {
 				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			} catch (e) {

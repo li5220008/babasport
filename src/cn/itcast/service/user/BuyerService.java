@@ -10,4 +10,10 @@ import cn.itcast.service.base.DAO;
  * Time: 下午3:21
  */
 public interface BuyerService extends DAO<Buyer> {
+    /**
+     * 判断用户是否存在
+     * @param username 用户名
+     * @return
+     */
+    public boolean exit(String username);
 }

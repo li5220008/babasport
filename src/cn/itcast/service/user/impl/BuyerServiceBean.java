@@ -3,11 +3,9 @@ package cn.itcast.service.user.impl;
 import cn.itcast.bean.user.Buyer;
 import cn.itcast.service.base.DaoSupport;
 import cn.itcast.service.user.BuyerService;
+import cn.itcast.utils.MD5;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Desc:
@@ -18,4 +16,15 @@ import javax.persistence.PersistenceContext;
  */
 @Service//spring 只会对定义在本类中的方法应用事务通知（advice）
 public class BuyerServiceBean extends DaoSupport<Buyer> implements BuyerService {
+    @Override
+    public void save(Buyer entity) {
+        entity.setPassword(MD5.MD5Encode(entity.getPassword()));
+        super.save(entity);
+    }
+
+    @Override
+    public boolean exit(String username){
+        long count = (Long)em.createQuery("select count(o) from Buyer o where o.username=?1").setParameter(1,username).getSingleResult();
+        return count>0;
+    }
 }

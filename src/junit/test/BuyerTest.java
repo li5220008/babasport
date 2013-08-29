@@ -77,5 +77,9 @@ public class BuyerTest {
 
         System.out.println(qr.getRecordtotal());
     }
+    @Test
+    public void exit(){
+        System.out.println(buyerService.exit("limings1sss"));
+    }
 
 }
