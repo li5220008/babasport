@@ -16,4 +16,12 @@ public interface BuyerService extends DAO<Buyer> {
      * @return
      */
     public boolean exit(String username);
+
+    /**
+     * 检验用户名及者密码是否存在
+     * @param username
+     * @param password
+     * @return
+     */
+    public boolean validate(String username, String password);
 }

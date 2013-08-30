@@ -10,9 +10,19 @@
         <forward name="message" path="/WEB-INF/page/share/message.jsp"/>
     </global-forwards>
     <action-mappings>
+        <!-- 控制台主页 -->
+        <action path="/control/center/main" forward="/WEB-INF/page/controlcenter/default.jsp"/>
+        <action path="/control/center/top" forward="/WEB-INF/page/controlcenter/top.jsp"/>
+        <action path="/control/center/left" forward="/WEB-INF/page/controlcenter/menu.jsp"/>
+        <action path="/control/center/right" forward="/WEB-INF/page/controlcenter/right.jsp"/>
+        <action path="/control/center/end" forward="/WEB-INF/page/controlcenter/end.jsp"/>
+
         <action path="/user/reg" name="buyerForm" scope="request" parameter="method">
             <forward name="regUI" path="/WEB-INF/page/user/userReg.jsp"></forward>
             <forward name="checkResult" path="/WEB-INF/page/user/checkuser.jsp"></forward>
+        </action>
+        <action path="/user/logon" name="buyerForm" scope="request">
+            <forward name="logon" path="/WEB-INF/page/user/logon.jsp"></forward>
         </action>
     </action-mappings>
     <controller>

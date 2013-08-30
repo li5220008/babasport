@@ -76,13 +76,7 @@ public class BuyerRegAction extends DispatchAction {
     public ActionForward isUserExsit(ActionMapping mapping, ActionForm form,
                                HttpServletRequest request, HttpServletResponse response) throws Exception {
         BuyerForm formbean = (BuyerForm)form;
-        if(buyerService.exit(formbean.getUsername())){
-            request.setAttribute("message", "该用户名已经存在！");
-            mapping.findForward("checkResult");
-        }else {
-            request.setAttribute("message", "该用户名可以使用！");
-            mapping.findForward("checkResult");
-        }
-        return mapping.findForward("regUI");
+        request.setAttribute("exsit", buyerService.exit(formbean.getUsername().trim()));
+        return mapping.findForward("checkResult");
     }
 }

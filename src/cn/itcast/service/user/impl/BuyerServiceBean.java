@@ -27,4 +27,9 @@ public class BuyerServiceBean extends DaoSupport<Buyer> implements BuyerService 
         long count = (Long)em.createQuery("select count(o) from Buyer o where o.username=?1").setParameter(1,username).getSingleResult();
         return count>0;
     }
+    public boolean validate(String username, String password){
+        long count = (Long)em.createQuery("select count(o) from Buyer o where o.username=?1 and o.password=?2").setParameter(1,username).setParameter(2,MD5.MD5Encode(password)).getSingleResult();
+        return count>0;
+    }
+
 }
