@@ -78,7 +78,7 @@
 <div id="Main">
   <ul id="FormRegStep1_Account" class="RegForm">
         <li class="Title">以下<span class="STYLE1">均为</span>必填项　</li>
-		
+
 		<li>
 		   <div class="Hint">会员名：</div>
         <div class="Input">
@@ -91,7 +91,7 @@
           </div>
         <div class="HackBox"></div>
 		</li>
- 
+
 	    <li>
             <div class="Hint">密码：</div>
             <div class="Input">
@@ -102,7 +102,7 @@
             </div>
             <div class="HackBox"></div>
           </li>
-    
+
           <li>
             <div class="Hint">再输入一遍密码：</div>
             <div class="Input">

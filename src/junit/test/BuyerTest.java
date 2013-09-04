@@ -34,7 +34,7 @@ public class BuyerTest {
 
     @Test
     public void save(){
-        for(int i=1; i<30; i++){
+        for(int i=40; i<100; i++){
             Buyer buyer = new Buyer();
             buyer.setUsername("limings"+i);
             buyer.setPassword("123456");

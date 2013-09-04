@@ -1,6 +1,6 @@
 package cn.itcast.web.action.user;
 
-import org.apache.struts.action.ActionForm;
+import cn.itcast.web.formbean.BaseForm;
 
 /**
  * desc:
@@ -8,10 +8,11 @@ import org.apache.struts.action.ActionForm;
  * Date: 13-8-29
  * Time: 上午10:57
  */
-public class BuyerForm extends ActionForm {
+public class BuyerForm extends BaseForm {
     private String username;
     private String password;
     private String email;
+    private String realname;
 
     public String getUsername() {
         return username;
@@ -35,5 +36,13 @@ public class BuyerForm extends ActionForm {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 }

@@ -16,13 +16,20 @@
         <action path="/control/center/left" forward="/WEB-INF/page/controlcenter/menu.jsp"/>
         <action path="/control/center/right" forward="/WEB-INF/page/controlcenter/right.jsp"/>
         <action path="/control/center/end" forward="/WEB-INF/page/controlcenter/end.jsp"/>
+        <!-- 网站用户列表显示 -->
+        <action path="/control/user/list" name="buyerForm" scope="request" validate="false">
+            <forward name="list" path="/WEB-INF/page/user/userlist.jsp"/>
+        </action>
+        <!-- 用户查询 -->
+        <action path="/control/user/query" forward="/WEB-INF/page/user/query.jsp"/>
+
 
         <action path="/user/reg" name="buyerForm" scope="request" parameter="method">
-            <forward name="regUI" path="/WEB-INF/page/user/userReg.jsp"></forward>
-            <forward name="checkResult" path="/WEB-INF/page/user/checkuser.jsp"></forward>
+            <forward name="regUI" path="/WEB-INF/page/user/userReg.jsp"/>
+            <forward name="checkResult" path="/WEB-INF/page/user/checkuser.jsp"/>
         </action>
         <action path="/user/logon" name="buyerForm" scope="request">
-            <forward name="logon" path="/WEB-INF/page/user/logon.jsp"></forward>
+            <forward name="logon" path="/WEB-INF/page/user/logon.jsp"/>
         </action>
     </action-mappings>
     <controller>
