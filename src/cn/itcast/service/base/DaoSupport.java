@@ -82,7 +82,9 @@ public abstract class DaoSupport<T> implements DAO<T> {
     public QueryResult<T> getScrollData(int firstResult, int maxResult, String where, Object[] params, LinkedHashMap<String, String> ordermap){
         String entityName = getEntityName(this.entityClass);
         String wereql = where !=null && !"".equals(where.trim()) ? " where "+ where : "";
-        Query query = em.createQuery("select o from "+entityName+" o "+wereql+buildOrderby(ordermap));
+        String sql = "select o from "+entityName+" o "+wereql+buildOrderby(ordermap);
+        System.out.println(sql);
+        Query query = em.createQuery(sql);
         if(firstResult !=-1 && maxResult!=-1) query.setFirstResult(firstResult).setMaxResults(maxResult); //如果传入-1 则不进行分页
         setQueryParameter(query, params);
         QueryResult<T> qr = new QueryResult<T>();
@@ -133,8 +135,10 @@ public abstract class DaoSupport<T> implements DAO<T> {
     }
 
     @Override
-    public void delete(Serializable entityid) {
-        em.remove(em.getReference(entityClass, entityid));
+    public void delete(Serializable... entityids) {
+        for(Serializable entityid : entityids){
+            em.remove(em.find(entityClass,entityid));
+        }
     }
 
     @Override

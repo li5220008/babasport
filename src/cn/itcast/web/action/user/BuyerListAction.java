@@ -11,9 +11,13 @@ import org.apache.struts.action.ActionMapping;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * desc: 用户分页列表
@@ -31,8 +35,31 @@ public class BuyerListAction extends Action {
         PageView<Buyer> pageView = new PageView<Buyer>(10,formbean.getPage());
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
         orderby.put("regTime", "desc");
-        pageView.setQueryResult(buyerService.getScrollData(pageView.getFirstResult(), pageView.getMaxresult()));
+        StringBuilder sb = new StringBuilder();
+        List<Object> params = new ArrayList<Object>();
+        if("true".equals(formbean.getQuery())){
+            if(formbean.getUsername() != null && !"".equals(formbean.getUsername().trim())){
+                params.add("%"+formbean.getUsername().trim()+"%");
+                sb.append("o.username like ?").append(params.size());
+            }
+
+            if(formbean.getRealname() != null && !"".equals(formbean.getRealname().trim())){
+                if(params.size()>0) sb.append(" and ");
+                params.add("%"+formbean.getRealname().trim()+"%");
+                sb.append("o.realname like ?").append(params.size());
+            }
+
+            if(formbean.getEmail() != null && !"".equals(formbean.getEmail().trim())){
+                if((params.size()>0)) sb.append(" and ");
+                params.add("%"+formbean.getEmail().trim()+"%");
+                sb.append("o.email like ?").append(params.size());
+            }
+            pageView.setQueryResult(buyerService.getScrollData(pageView.getFirstResult(), pageView.getMaxresult(), sb.toString(), params.toArray() ,orderby));
+        }else {
+            pageView.setQueryResult(buyerService.getScrollData(pageView.getFirstResult(), pageView.getMaxresult(),orderby));
+        }
         request.setAttribute("pageView", pageView);
         return mapping.findForward("list");
     }
+
 }

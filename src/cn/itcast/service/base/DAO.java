@@ -35,9 +35,9 @@ public interface DAO<T> {
 
     /**
      * 删除实体
-     * @param entityid
+     * @param entityids
      */
-    public void delete(Serializable entityid);//JPA 规范实体的id属性必须实现序列化接口
+    public void delete(Serializable... entityids);//JPA 规范实体的id属性必须实现序列化接口
 
     /**
      * 查找所有实体
